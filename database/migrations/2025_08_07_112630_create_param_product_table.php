@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('param_product', function (Blueprint $table) {
             $table->id();
+            $table->string('value');
+
+            $table->foreignId('product_id')->index()->constrained('products');
+            $table->foreignId('param_id')->index()->constrained('params');
             $table->timestamps();
         });
     }
